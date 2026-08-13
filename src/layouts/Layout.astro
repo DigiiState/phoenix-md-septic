@@ -1,0 +1,48 @@
+---
+interface Props {
+	title: string;
+	phone: string;
+	city: string;
+	niche: string;
+}
+
+const { title, phone, city, niche } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>{title}</title>
+	</head>
+	<body class="bg-white text-slate-900 font-sans antialiased">
+		<!-- Irving-Style Top Bar -->
+		<div class="bg-red-600 text-white text-center py-2 text-xs font-bold tracking-widest uppercase">
+			🚨 Emergency 24/7 {niche} Service - {city}, MD
+		</div>
+
+		<!-- NOLA-Style Header -->
+		<header class="flex justify-between items-center px-6 py-4 border-b-4 border-red-600">
+			<div class="text-2xl font-black tracking-tighter text-slate-900">
+				{city.replace(' ', '')}<span class="text-blue-600">{niche.split(' ')[0]}</span>
+			</div>
+			<a href={`tel:${phone.replace(/-/g, '')}`} class="text-red-600 font-black text-xl hover:underline">
+				📞 {phone}
+			</a>
+		</header>
+
+		<slot />
+
+		<!-- Geo-Anchor Footer -->
+		<footer class="bg-slate-900 text-slate-400 py-12 px-6 text-center text-sm">
+			<div class="max-w-4xl mx-auto">
+				<p class="mb-4">{city} {niche} Pros | {phone} | {city}, Maryland</p>
+				<p class="opacity-50 text-[10px] uppercase tracking-widest">
+					DigiiState.com - Maryland's Premier Digital Real Estate Brokerage
+				</p>
+			</div>
+		</footer>
+	</body>
+</html>

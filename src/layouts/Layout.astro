@@ -7,6 +7,36 @@ interface Props {
 }
 
 const { title, phone, city, niche } = Astro.props;
+
+// Niche-specific services mapping
+const servicesByNiche: Record<string, {name: string, slug: string}[]> = {
+  "Septic Pumping": [
+    { name: "Septic Tank Pumping", slug: "septic-pumping" },
+    { name: "Drain Field Repair", slug: "drain-field-repair" },
+    { name: "System Inspections", slug: "inspections" },
+    { name: "Grease Trap Cleaning", slug: "grease-traps" }
+  ],
+  "Tree Removal": [
+    { name: "Emergency Tree Removal", slug: "emergency-removal" },
+    { name: "Tree Trimming & Pruning", slug: "tree-trimming" },
+    { name: "Stump Grinding", slug: "stump-grinding" },
+    { name: "Storm Damage Care", slug: "storm-damage" }
+  ],
+  "Water Damage": [
+    { name: "Water Extraction", slug: "water-extraction" },
+    { name: "Mold Remediation", slug: "mold-remediation" },
+    { name: "Basement Waterproofing", slug: "waterproofing" },
+    { name: "Structural Drying", slug: "drying" }
+  ],
+  "DUI Defense": [
+    { name: "DUI Defense", slug: "dui-defense" },
+    { name: "MVA License Hearings", slug: "mva-hearings" },
+    { name: "Traffic Ticket Defense", slug: "traffic-defense" },
+    { name: "Criminal Defense", slug: "criminal-defense" }
+  ]
+};
+
+const currentServices = servicesByNiche[niche] || servicesByNiche["Septic Pumping"];
 ---
 
 <!doctype html>
@@ -19,6 +49,29 @@ const { title, phone, city, niche } = Astro.props;
 		<style is:global>
 			body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; }
 			.container { max-width: 1000px; margin: 0 auto; padding: 0 15px; }
+			
+			/* Dropdown Styles */
+			.dropdown { position: relative; display: inline-block; }
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				background-color: #ffffff;
+				min-width: 220px;
+				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+				z-index: 50;
+				border-top: 3px solid #28657c;
+			}
+			.dropdown-content a {
+				color: #28657c;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+				text-transform: none;
+				font-size: 14px;
+				border-bottom: 1px solid #f1f5f9;
+			}
+			.dropdown-content a:hover { background-color: #f8fafc; }
+			.dropdown:hover .dropdown-content { display: block; }
 		</style>
 	</head>
 	<body class="bg-white text-slate-800">
@@ -26,13 +79,20 @@ const { title, phone, city, niche } = Astro.props;
 		<header class="bg-white py-6">
 			<div class="container flex flex-col md:flex-row justify-between items-center gap-4">
 				<div class="text-3xl font-bold text-[#28657c] tracking-tight">
-					{city} {niche} Pros
+					<a href="/" class="text-[#28657c] no-underline">{city} {niche} Pros</a>
 				</div>
 				<div class="flex items-center gap-8">
 					<nav class="hidden md:flex gap-6 font-bold uppercase text-xs text-[#28657c]">
 						<a href="/" class="hover:underline">Home</a>
 						<a href="/about" class="hover:underline">About</a>
-						<a href="/services" class="hover:underline">Services</a>
+						<div class="dropdown">
+							<a href="/services" class="hover:underline">Services ▾</a>
+							<div class="dropdown-content">
+								{currentServices.map(service => (
+									<a href={`/services/${service.slug}`}>{service.name}</a>
+								))}
+							</div>
+						</div>
 						<a href="/contact" class="hover:underline">Contact</a>
 					</nav>
 					<a href={`tel:${phone.replace(/-/g, '')}`} class="text-xl font-bold text-[#28657c] border-2 border-[#28657c] px-4 py-1 hover:bg-[#28657c] hover:text-white transition-colors">

@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    { params: { slug: 'septic-pumping' } },
+    { params: { slug: 'drain-field-repair' } },
+    { params: { slug: 'inspections' } },
+    { params: { slug: 'grease-traps' } },
+    { params: { slug: 'emergency-removal' } },
+    { params: { slug: 'tree-trimming' } },
+    { params: { slug: 'stump-grinding' } },
+    { params: { slug: 'storm-damage' } },
+    { params: { slug: 'water-extraction' } },
+    { params: { slug: 'mold-remediation' } },
+    { params: { slug: 'waterproofing' } },
+    { params: { slug: 'drying' } },
+    { params: { slug: 'dui-defense' } },
+    { params: { slug: 'mva-hearings' } },
+    { params: { slug: 'traffic-defense' } },
+    { params: { slug: 'criminal-defense' } }
+  ];
+}
+
+const { slug } = Astro.params;
+
+// These would normally be passed in or injected during build
+const phone = "410-000-0000";
+const city = "Phoenix";
+const niche = "Septic Pumping";
+
+// Content Database
+const contentDb: Record<string, any> = {
+  "septic-pumping": {
+    name: "Septic Tank Pumping",
+    title: `Septic Tank Pumping in ${city}, MD | Full Service Maintenance`,
+    image: "https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323a97.png",
+    text: `Looking for professional septic tank pumping in ${city}, MD? Regular maintenance is the most critical factor in extending the life of your septic system. Our team uses industrial-grade vacuum trucks to perform a complete extraction of solids and liquids, ensuring your tank is thoroughly cleaned and inspected. In ${city}, homeowners face unique soil challenges that can lead to premature system failure if not maintained properly. We provide detailed reports and scheduled reminders to keep your property safe and compliant with Maryland regulations.`
+  },
+  "drain-field-repair": {
+    name: "Drain Field Repair",
+    title: `Drain Field Repair & Restoration ${city} MD | Save Your Septic`,
+    image: "https://sc02.alicdn.com/kf/A75a46d3e08dc416fb1c66c63924c2a00F.png",
+    text: `Is your yard in ${city} soggy or smelling of sewage? You likely have a drain field issue. Full system replacements can cost over $20,000, but our specialized restoration techniques can often save your existing field for a fraction of the price. We use Maryland-approved methods like aerobic bacterial treatments and high-pressure jetting to clear clogs and restore soil absorption. Don't dig up your yard until you talk to our ${city} drain field experts.`
+  },
+  "emergency-removal": {
+    name: "Emergency Tree Removal",
+    title: `24/7 Emergency Tree Removal ${city} MD | Storm Damage Care`,
+    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80",
+    text: `When a storm hits ${city}, trees don't wait for business hours. Our emergency response team is on standby 24/7 to handle fallen trees on houses, blocked driveways, and hazardous hanging limbs. We utilize specialized cranes and rigging equipment to safely remove massive debris without further damaging your property. Serving Gibson Island, Annapolis, and all of Anne Arundel County with rapid-response arborist services.`
+  }
+};
+
+const page = contentDb[slug] || contentDb["septic-pumping"];
+---
+
+<Layout 
+	title={page.title}
+	phone={phone}
+	city={city}
+	niche={niche}
+>
+	<!-- 1. Hero -->
+	<section class="relative bg-slate-800 py-32 text-center text-white bg-cover bg-center" style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${page.image}');`}>
+		<div class="container">
+			<h1 class="text-[50px] font-bold leading-tight mb-4 uppercase tracking-tighter">{page.name} in {city}, MD</h1>
+			<h3 class="text-xl font-medium mb-10 opacity-90 uppercase tracking-widest">Professional {niche} Solutions for Maryland Neighbors</h3>
+			<a href={`tel:${phone.replace(/-/g, '')}`} class="inline-block bg-white text-[#28657c] font-bold text-2xl px-12 py-4 border-2 border-white hover:bg-transparent hover:text-white transition-all uppercase tracking-tighter">
+				Request Help: {phone}
+			</a>
+		</div>
+	</section>
+
+	<!-- 2. Main Content -->
+	<section class="py-20">
+		<div class="container grid md:grid-cols-3 gap-16 items-start">
+			<div class="md:col-span-2">
+				<h2 class="text-4xl font-bold text-[#28657c] mb-8 uppercase tracking-tighter">{page.name} Experts in {city}</h2>
+				<div class="prose prose-lg text-slate-600 space-y-8">
+					<p>{page.text}</p>
+					<p>We take pride in being a locally owned business that understands the specific needs of our Maryland community. Whether you are dealing with an urgent emergency or just looking for routine maintenance to protect your property investment, our team has the tools, the trucks, and the training to get the job done right the first time.</p>
+					
+					<div class="grid grid-cols-2 gap-8 my-12">
+						<img src={page.image} alt={page.name} class="w-full h-64 object-cover rounded shadow-lg" />
+						<img src="https://sc02.alicdn.com/kf/A51bdf3e42e8747b2bdd0fa8cee59f09db.png" alt="Maryland Service" class="w-full h-64 object-cover rounded shadow-lg" />
+					</div>
+
+					<h3 class="text-2xl font-bold text-[#28657c] uppercase tracking-tighter">Why Choose Our {city} Team?</h3>
+					<ul class="list-disc pl-6 space-y-4 font-bold text-slate-800">
+						<li>Fast Response Times in {city} and surrounding areas.</li>
+						<li>Licensed & Insured Maryland Technicians.</li>
+						<li>Modern Industrial-Grade Equipment for every job.</li>
+						<li>100% Satisfaction Guaranteed.</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Sidebar Form -->
+			<div class="bg-slate-50 border-2 border-[#28657c] p-8 shadow-xl">
+				<h3 class="text-xl font-bold text-center text-[#28657c] uppercase mb-8 tracking-tighter">Get a Quick Quote</h3>
+				<form class="space-y-4">
+					<input type="text" placeholder="Your Name" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<input type="tel" placeholder="Phone Number" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<textarea placeholder="Tell us about your needs..." class="w-full border border-slate-300 p-3 h-32 outline-[#28657c]"></textarea>
+					<button class="w-full bg-[#28657c] text-white py-4 font-bold text-lg uppercase tracking-tighter hover:bg-[#1e4e5e] transition-colors">Submit Request</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</Layout>

@@ -7,81 +7,82 @@ const niche = "Septic Pumping";
 ---
 
 <Layout 
-	title={`${city} MD ${niche} & Emergency Service | Locally Owned`}
+	title={`${city} ${niche} | Locally Owned Maryland Pro`}
 	phone={phone}
 	city={city}
 	niche={niche}
 >
-	<!-- NOLA-Style Hero with Integrated Form -->
-	<section class="relative bg-slate-900 text-white overflow-hidden">
-		<div class="absolute inset-0 opacity-20 bg-[url('https://sc02.alicdn.com/kf/Ab3bd827cca434c7a8d2bfd6b50ff2113f.png')] bg-cover bg-center"></div>
-		<div class="relative max-w-5xl mx-auto px-6 py-16 md:py-24 flex flex-col md:flex-row gap-12 items-center">
-			<div class="flex-1 text-center md:text-left">
-				<h1 class="text-4xl md:text-5xl font-black leading-none mb-6">
-					{city} MD {niche} & <span class="text-red-500 underline">EMERGENCY</span> Service
-				</h1>
-				<p class="text-lg text-slate-300 mb-8 max-w-xl">
-					Locally Owned and Operated in Maryland. 100% Satisfaction Guaranteed for Howard & Baltimore County Neighbors.
-				</p>
-				<div class="inline-grid grid-cols-1 gap-3 text-sm font-bold bg-white/10 p-4 rounded-lg backdrop-blur-sm">
-					<div class="flex items-center gap-2">✅ Same Day Dispatch</div>
-					<div class="flex items-center gap-2">✅ Licensed MD Technicians</div>
-					<div class="flex items-center gap-2">✅ Emergency Response</div>
+	<!-- 1. Irving Mimic Hero -->
+	<section class="relative bg-slate-800 py-32 text-center text-white bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://sc02.alicdn.com/kf/Ab3bd827cca434c7a8d2bfd6b50ff2113f.png');">
+		<div class="container">
+			<h1 class="text-[50px] font-bold leading-tight mb-4 uppercase tracking-tighter">{niche} {city} MD</h1>
+			<h3 class="text-xl font-medium mb-10 opacity-90 uppercase tracking-widest">Locally Owned & Professionally Managed</h3>
+			<a href={`tel:${phone.replace(/-/g, '')}`} class="inline-block bg-white text-[#28657c] font-bold text-2xl px-12 py-4 border-2 border-white hover:bg-transparent hover:text-white transition-all uppercase tracking-tighter">
+				Call Now {phone}
+			</a>
+		</div>
+	</section>
+
+	<!-- 2. Two-Column Trust & Form Section (Exact Irving Split) -->
+	<section class="py-20">
+		<div class="container grid md:grid-cols-2 gap-16 items-start">
+			<div>
+				<h2 class="text-3xl font-bold text-[#28657c] mb-10 uppercase tracking-tighter">3 Reasons To Trust Our {city} {niche} Team</h2>
+				<div class="space-y-10">
+					<div>
+						<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">1. Protect Your Property Investment</h4>
+						<p class="text-slate-600">Professional {niche} will extend the life of your systems, protecting your home's infrastructure. It's recommended to have professional maintenance at least every 2-3 years.</p>
+					</div>
+					<div>
+						<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">2. Environmental Safety & Quality</h4>
+						<p class="text-slate-600">Ensuring proper system health prevents pollutants from entering your local Maryland groundwater. We use approved methods to maintain your system's integrity.</p>
+					</div>
+					<div>
+						<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">3. Keep Your Property Healthy</h4>
+						<p class="text-slate-600">Professional {niche} service keeps your home running smoothly. We help prevent backups and costly drain field failures, creating a safe environment for your family.</p>
+					</div>
 				</div>
 			</div>
 
-			<!-- NOLA Hero Form -->
-			<div class="w-full md:w-80 bg-white p-6 rounded shadow-2xl text-slate-900">
-				<div class="bg-red-600 text-white -mx-6 -mt-6 p-3 text-center font-black text-sm uppercase tracking-tighter mb-6 rounded-t">
-					Free Instant Quote
-				</div>
+			<!-- Irving Mimic Sidebar Form -->
+			<div class="bg-slate-50 border-2 border-[#28657c] p-10 shadow-xl">
+				<h3 class="text-xl font-bold text-center text-[#28657c] uppercase mb-8 tracking-tighter">Get a Free Estimate</h3>
 				<form class="space-y-4">
-					<input type="text" placeholder="Your Name" class="w-full border border-slate-300 p-2 rounded focus:border-blue-600 outline-none" />
-					<input type="tel" placeholder="Phone Number" class="w-full border border-slate-300 p-2 rounded focus:border-blue-600 outline-none" />
-					<input type="text" placeholder="Service Needed" class="w-full border border-slate-300 p-2 rounded focus:border-blue-600 outline-none" />
-					<button type="submit" class="w-full bg-blue-600 text-white py-3 font-black uppercase tracking-widest hover:bg-blue-700 transition-colors">
-						Get My Quote Now
-					</button>
+					<input type="text" placeholder="Your Name" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<input type="tel" placeholder="Phone Number" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<input type="text" placeholder="City / Zip" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<textarea placeholder="Tell us what you need..." class="w-full border border-slate-300 p-3 h-32 outline-[#28657c]"></textarea>
+					<button class="w-full bg-[#28657c] text-white py-4 font-bold text-lg uppercase tracking-tighter hover:bg-[#1e4e5e] transition-colors shadow-lg">Get Your Quote</button>
 				</form>
+				<p class="text-[10px] text-slate-400 mt-4 text-center uppercase font-bold">100% Satisfaction Guaranteed</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- Irving Value Stack -->
-	<section class="bg-slate-100 py-10 border-b border-slate-200">
-		<div class="max-w-4xl mx-auto grid grid-cols-3 gap-4 text-center">
-			<div class="space-y-1">
-				<div class="text-2xl">🛡️</div>
-				<div class="text-[10px] md:text-xs font-black uppercase text-slate-500">100% Guaranteed</div>
+	<!-- 3. Vertical Service Stack (Exact Irving Flow) -->
+	<section class="py-20 border-t border-slate-100">
+		<div class="container max-w-2xl">
+			<div class="text-center mb-16">
+				<h2 class="text-4xl font-bold text-[#28657c] uppercase tracking-tighter mb-4">Our Services</h2>
+				<hr class="w-20 border-b-4 border-[#28657c] mx-auto" />
 			</div>
-			<div class="space-y-1">
-				<div class="text-2xl">🏡</div>
-				<div class="text-[10px] md:text-xs font-black uppercase text-slate-500">Locally Owned</div>
-			</div>
-			<div class="space-y-1">
-				<div class="text-2xl">⚡</div>
-				<div class="text-[10px] md:text-xs font-black uppercase text-slate-500">Emergency Service</div>
-			</div>
-		</div>
-	</section>
 
-	<!-- Abundant Clarity Content Silos -->
-	<section class="max-w-4xl mx-auto px-6 py-20">
-		<h2 class="text-3xl font-black mb-12 border-b-4 border-blue-600 inline-block">Maryland Septic Solutions</h2>
-		
-		<div class="space-y-12">
-			<div class="border-l-4 border-blue-600 pl-6">
-				<h3 class="text-xl font-bold mb-2">{city} MD {niche}</h3>
-				<p class="text-slate-600 leading-relaxed">
-					Routine pumping and cleaning to maintain system health in the {city} area. Our local team uses Maryland-approved methods to ensure your system operates at peak efficiency.
-				</p>
-			</div>
-			
-			<div class="border-l-4 border-blue-600 pl-6">
-				<h3 class="text-xl font-bold mb-2">Western Howard County Drain Field Repair</h3>
-				<p class="text-slate-600 leading-relaxed">
-					Save thousands with our Maryland-approved restoration methods. We fix soggy yards and slow drains in Clarksville, Dayton, and surrounding communities.
-				</p>
+			<div class="space-y-20">
+				<div>
+					<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Residential {niche} Services</h3>
+					<p class="text-slate-600 leading-relaxed mb-6">Routine cleaning and maintenance using Maryland-approved methods to ensure long-term system health. We serve all residential neighborhoods in {city}.</p>
+					<hr class="border-slate-100" />
+				</div>
+				<div>
+					<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Emergency Backup Response</h3>
+					<p class="text-slate-600 leading-relaxed mb-6">24/7 rapid response for critical issues that can't wait. We're on standby for {city} neighbors when disaster strikes.</p>
+					<hr class="border-slate-100" />
+				</div>
+				<div>
+					<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Professional System Inspections</h3>
+					<p class="text-slate-600 leading-relaxed mb-6">Required certifications for real estate transfers and annual system health audits in Howard/Baltimore Counties.</p>
+					<hr class="border-slate-100" />
+				</div>
 			</div>
 		</div>
 	</section>

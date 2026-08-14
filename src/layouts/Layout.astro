@@ -23,14 +23,24 @@ const { title, phone, city, niche } = Astro.props;
 			🚨 Emergency 24/7 {niche} Service - {city}, MD
 		</div>
 
-		<!-- NOLA-Style Header -->
-		<header class="flex justify-between items-center px-6 py-4 border-b-4 border-red-600">
-			<div class="text-2xl font-black tracking-tighter text-slate-900">
-				{city.replace(' ', '')}<span class="text-blue-600">{niche.split(' ')[0]}</span>
+		<!-- Multi-Page Header -->
+		<header class="bg-white border-b-2 border-slate-100">
+			<div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+				<div class="text-2xl font-black tracking-tighter text-slate-900">
+					{city.replace(' ', '')}<span class="text-blue-600">{niche.split(' ')[0]}</span>
+				</div>
+				
+				<nav class="flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-500">
+					<a href="/" class="hover:text-blue-600">Home</a>
+					<a href="/about" class="hover:text-blue-600">About Us</a>
+					<a href="/services" class="hover:text-blue-600">Services</a>
+					<a href="/contact" class="hover:text-blue-600">Contact</a>
+				</nav>
+
+				<a href={`tel:${phone.replace(/-/g, '')}`} class="text-red-600 font-black text-xl hover:underline">
+					📞 {phone}
+				</a>
 			</div>
-			<a href={`tel:${phone.replace(/-/g, '')}`} class="text-red-600 font-black text-xl hover:underline">
-				📞 {phone}
-			</a>
 		</header>
 
 		<slot />
@@ -38,6 +48,12 @@ const { title, phone, city, niche } = Astro.props;
 		<!-- Geo-Anchor Footer -->
 		<footer class="bg-slate-900 text-slate-400 py-12 px-6 text-center text-sm">
 			<div class="max-w-4xl mx-auto">
+				<div class="mb-8 flex flex-wrap justify-center gap-4 text-xs uppercase font-bold">
+					<a href="/" class="hover:text-white">Home</a>
+					<a href="/about" class="hover:text-white">About Us</a>
+					<a href="/services" class="hover:text-white">Services</a>
+					<a href="/contact" class="hover:text-white">Contact</a>
+				</div>
 				<p class="mb-4">{city} {niche} Pros | {phone} | {city}, Maryland</p>
 				<p class="opacity-50 text-[10px] uppercase tracking-widest">
 					DigiiState.com - Maryland's Premier Digital Real Estate Brokerage

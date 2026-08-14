@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const phone = "410-000-0000";
+const city = "Phoenix";
+const niche = "Septic Pumping";
+---
+
+<Layout 
+	title={`Services | ${city} MD ${niche} & Emergency Solutions`}
+	phone={phone}
+	city={city}
+	niche={niche}
+>
+	<main class="max-w-4xl mx-auto px-6 py-20">
+		<h1 class="text-4xl font-black mb-8 border-b-4 border-red-600 inline-block">Our Services</h1>
+		
+		<p class="text-xl mb-12">We offer a full range of {niche} and emergency maintenance solutions for residential and commercial properties in {city}, Maryland.</p>
+
+		<div class="grid md:grid-cols-2 gap-8">
+			<div class="p-6 border border-slate-200 rounded-lg hover:shadow-lg transition-shadow">
+				<h3 class="text-xl font-bold mb-4">{niche}</h3>
+				<p class="text-slate-600 mb-6">Routine cleaning and maintenance using Maryland-approved methods to ensure long-term system health.</p>
+				<a href="/contact" class="text-blue-600 font-bold hover:underline">Get a Quote &rarr;</a>
+			</div>
+
+			<div class="p-6 border border-slate-200 rounded-lg hover:shadow-lg transition-shadow">
+				<h3 class="text-xl font-bold mb-4">Emergency Backups</h3>
+				<p class="text-slate-600 mb-6">24/7 rapid response for critical issues that can't wait. We're on standby for {city} neighbors.</p>
+				<a href="tel:4100000000" class="text-red-600 font-bold hover:underline">Call Emergency Dispatch &rarr;</a>
+			</div>
+
+			<div class="p-6 border border-slate-200 rounded-lg hover:shadow-lg transition-shadow">
+				<h3 class="text-xl font-bold mb-4">Professional Inspections</h3>
+				<p class="text-slate-600 mb-6">Required certifications for real estate transfers and annual system health audits.</p>
+				<a href="/contact" class="text-blue-600 font-bold hover:underline">Schedule Inspection &rarr;</a>
+			</div>
+
+			<div class="p-6 border border-slate-200 rounded-lg hover:shadow-lg transition-shadow">
+				<h3 class="text-xl font-bold mb-4">Repair & Restoration</h3>
+				<p class="text-slate-600 mb-6">From minor leaks to full restoration, we save you thousands compared to total replacement.</p>
+				<a href="/contact" class="text-blue-600 font-bold hover:underline">Free Evaluation &rarr;</a>
+			</div>
+		</div>
+	</main>
+</Layout>

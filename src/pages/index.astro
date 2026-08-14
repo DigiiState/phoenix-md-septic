@@ -7,13 +7,14 @@ const niche = "Septic Pumping";
 
 // Niche-specific images mapping
 const images = {
-  "Septic Pumping": "https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323a97.png",
+  "Septic Pumping": "https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323a97.png", // Showing septic being pumped
   "Tree Removal": "https://sc02.alicdn.com/kf/A0520d497b79e4c58b61a5f769cd41f14V.png",
   "Water Damage": "https://sc02.alicdn.com/kf/A4fe71a4344644752848c5328899d28f41.png",
   "DUI Defense": "https://sc02.alicdn.com/kf/Ab2dfcdf361bf428d8a0bcbc89def94fer.png"
 };
 
-const serviceImage = 'https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323a97.png';
+const serviceImage = images[niche] || images["Septic Pumping"];
+const truckImage = "https://sc02.alicdn.com/kf/A5dd3b365fb234f248e7bf687501827006.png"; // Unbranded professional truck
 ---
 
 <Layout 
@@ -23,7 +24,7 @@ const serviceImage = 'https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323
 	niche={niche}
 >
 	<!-- 1. Hero -->
-	<section class="relative bg-slate-800 py-32 text-center text-white bg-cover bg-center" style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${serviceImage}');`}>
+	<section class="relative bg-slate-800 py-32 text-center text-white bg-cover bg-center" style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323a97.png');`}>
 		<div class="container mx-auto px-6">
 			<h1 class="text-[50px] font-bold leading-tight mb-4 uppercase tracking-tighter">{niche} {city} MD</h1>
 			<h3 class="text-xl font-medium mb-10 opacity-90 uppercase tracking-widest">Locally Owned & Professionally Managed in Maryland</h3>
@@ -56,7 +57,7 @@ const serviceImage = 'https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323
 					<div class="flex gap-6">
 						<div class="w-24 h-24 flex-shrink-0 bg-[#28657c]/10 rounded flex items-center justify-center text-4xl">🏡</div>
 						<div>
-							<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">3. Keep Your Property Running Smoothly</h4>
+							<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">3. Keep Your Property Healthy</h4>
 							<p class="text-slate-600">A professional {niche} service in {city} will keep your home or business plumbing looking and feeling fresh. We help bring aging systems back to life and prevent the back-breaking stress of a midnight sewage backup. We create a great first impression for your guests by ensuring your property is always fully functional and odor-free.</p>
 						</div>
 					</div>
@@ -95,9 +96,9 @@ const serviceImage = 'https://sc02.alicdn.com/kf/A8239af84c8564874a21b4fcef95323
 						When it comes to maintaining your home's infrastructure in {city}, Maryland, you cannot afford to take shortcuts. Unlike the big national franchises that use generic call centers, our {niche} team is based right here in {city}. We understand the specific soil types of Baltimore and Howard Counties, and we know exactly how the local climate affects your septic tank's performance. 
 					</p>
 					<p class="text-slate-600 leading-relaxed mb-6">
-						Our {city} {niche} services are designed to be thorough. We don't just "pump and run." Our technicians perform a visual inspection of the tank walls, baffles, and the overall integrity of the system during every visit. This "Abundant Clarity" in our process ensures that small issues are caught before they turn into \$20,000 drain field disasters. Whether you are in the heart of {city} or the surrounding Maryland countryside, we are your go-to experts for reliable septic care.
+						Our {city} {niche} services are designed to be thorough. We don't just "pump and run." Our technicians perform a visual inspection of the tank walls, baffles, and the overall integrity of the system during every visit. This "Abundant Clarity" in our process ensures that small issues are caught before they turn into $20,000 drain field disasters. Whether you are in the heart of {city} or the surrounding Maryland countryside, we are your go-to experts for reliable septic care.
 					</p>
-					<img src="https://sc02.alicdn.com/kf/A51bdf3e42e8747b2bdd0fa8cee59f09db.png" alt="Septic Truck" class="w-full h-80 object-cover rounded shadow-lg my-10" />
+					<img src={truckImage} alt="Septic Truck" class="w-full h-80 object-cover rounded shadow-lg my-10" />
 					<hr class="border-slate-100" />
 				</div>
 

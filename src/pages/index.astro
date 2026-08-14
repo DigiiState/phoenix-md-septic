@@ -4,6 +4,16 @@ import Layout from '../layouts/Layout.astro';
 const phone = "410-000-0000";
 const city = "Phoenix";
 const niche = "Septic Pumping";
+
+// Niche-specific images mapping
+const images = {
+  "Septic Pumping": "https://sc02.alicdn.com/kf/A51bdf3e42e8747b2bdd0fa8cee59f09db.png",
+  "Tree Removal": "https://sc02.alicdn.com/kf/A0520d497b79e4c58b61a5f769cd41f14V.png",
+  "Water Damage": "https://sc02.alicdn.com/kf/A4fe71a4344644752848c5328899d28f41.png",
+  "DUI Defense": "https://sc02.alicdn.com/kf/Ab2dfcdf361bf428d8a0bcbc89def94fer.png"
+};
+
+const serviceImage = images[niche] || images["Septic Pumping"];
 ---
 
 <Layout 
@@ -12,8 +22,8 @@ const niche = "Septic Pumping";
 	city={city}
 	niche={niche}
 >
-	<!-- 1. Irving Mimic Hero -->
-	<section class="relative bg-slate-800 py-32 text-center text-white bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://sc02.alicdn.com/kf/Ab3bd827cca434c7a8d2bfd6b50ff2113f.png');">
+	<!-- 1. Hero -->
+	<section class="relative bg-slate-800 py-32 text-center text-white bg-cover bg-center" style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('${serviceImage}');`}>
 		<div class="container">
 			<h1 class="text-[50px] font-bold leading-tight mb-4 uppercase tracking-tighter">{niche} {city} MD</h1>
 			<h3 class="text-xl font-medium mb-10 opacity-90 uppercase tracking-widest">Locally Owned & Professionally Managed</h3>
@@ -23,28 +33,36 @@ const niche = "Septic Pumping";
 		</div>
 	</section>
 
-	<!-- 2. Two-Column Trust & Form Section (Exact Irving Split) -->
+	<!-- 2. Trust & Form Section -->
 	<section class="py-20">
 		<div class="container grid md:grid-cols-2 gap-16 items-start">
 			<div>
 				<h2 class="text-3xl font-bold text-[#28657c] mb-10 uppercase tracking-tighter">3 Reasons To Trust Our {city} {niche} Team</h2>
 				<div class="space-y-10">
-					<div>
-						<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">1. Protect Your Property Investment</h4>
-						<p class="text-slate-600">Professional {niche} will extend the life of your systems, protecting your home's infrastructure. It's recommended to have professional maintenance at least every 2-3 years.</p>
+					<div class="flex gap-6">
+						<img src={serviceImage} alt="Professional Service" class="w-24 h-24 object-cover rounded shadow" />
+						<div>
+							<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">1. Protect Your Property Investment</h4>
+							<p class="text-slate-600">Professional {niche} will extend the life of your systems, protecting your home's infrastructure.</p>
+						</div>
 					</div>
-					<div>
-						<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">2. Environmental Safety & Quality</h4>
-						<p class="text-slate-600">Ensuring proper system health prevents pollutants from entering your local Maryland groundwater. We use approved methods to maintain your system's integrity.</p>
+					<div class="flex gap-6">
+						<img src="https://sc02.alicdn.com/kf/A68070f8604e74c09a8e236685acd8b46T.png" alt="Safety" class="w-24 h-24 object-cover rounded shadow" />
+						<div>
+							<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">2. Environmental Safety & Quality</h4>
+							<p class="text-slate-600">Ensuring proper system health prevents pollutants from entering local Maryland groundwater.</p>
+						</div>
 					</div>
-					<div>
-						<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">3. Keep Your Property Healthy</h4>
-						<p class="text-slate-600">Professional {niche} service keeps your home running smoothly. We help prevent backups and costly drain field failures, creating a safe environment for your family.</p>
+					<div class="flex gap-6">
+						<img src="https://sc02.alicdn.com/kf/A75a46d3e08dc416fb1c66c63924c2a00F.png" alt="Health" class="w-24 h-24 object-cover rounded shadow" />
+						<div>
+							<h4 class="text-xl font-bold text-[#28657c] mb-2 uppercase tracking-tighter">3. Keep Your Property Healthy</h4>
+							<p class="text-slate-600">Professional {niche} service keeps your home running smoothly and prevents backups.</p>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<!-- Irving Mimic Sidebar Form -->
 			<div class="bg-slate-50 border-2 border-[#28657c] p-10 shadow-xl">
 				<h3 class="text-xl font-bold text-center text-[#28657c] uppercase mb-8 tracking-tighter">Get a Free Estimate</h3>
 				<form class="space-y-4">
@@ -54,34 +72,32 @@ const niche = "Septic Pumping";
 					<textarea placeholder="Tell us what you need..." class="w-full border border-slate-300 p-3 h-32 outline-[#28657c]"></textarea>
 					<button class="w-full bg-[#28657c] text-white py-4 font-bold text-lg uppercase tracking-tighter hover:bg-[#1e4e5e] transition-colors shadow-lg">Get Your Quote</button>
 				</form>
-				<p class="text-[10px] text-slate-400 mt-4 text-center uppercase font-bold">100% Satisfaction Guaranteed</p>
 			</div>
 		</div>
 	</section>
 
-	<!-- 3. Vertical Service Stack (Exact Irving Flow) -->
+	<!-- 3. Vertical Service Stack with Images -->
 	<section class="py-20 border-t border-slate-100">
-		<div class="container max-w-2xl">
+		<div class="container max-w-4xl">
 			<div class="text-center mb-16">
 				<h2 class="text-4xl font-bold text-[#28657c] uppercase tracking-tighter mb-4">Our Services</h2>
 				<hr class="w-20 border-b-4 border-[#28657c] mx-auto" />
 			</div>
 
 			<div class="space-y-20">
-				<div>
-					<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Residential {niche} Services</h3>
-					<p class="text-slate-600 leading-relaxed mb-6">Routine cleaning and maintenance using Maryland-approved methods to ensure long-term system health. We serve all residential neighborhoods in {city}.</p>
-					<hr class="border-slate-100" />
+				<div class="grid md:grid-cols-2 gap-10 items-center">
+					<img src={serviceImage} alt="Residential Service" class="w-full h-64 object-cover rounded shadow-lg" />
+					<div>
+						<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Residential {niche} Services</h3>
+						<p class="text-slate-600 leading-relaxed">Routine cleaning and maintenance using Maryland-approved methods to ensure long-term system health. We serve all residential neighborhoods in {city}.</p>
+					</div>
 				</div>
-				<div>
-					<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Emergency Backup Response</h3>
-					<p class="text-slate-600 leading-relaxed mb-6">24/7 rapid response for critical issues that can't wait. We're on standby for {city} neighbors when disaster strikes.</p>
-					<hr class="border-slate-100" />
-				</div>
-				<div>
-					<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Professional System Inspections</h3>
-					<p class="text-slate-600 leading-relaxed mb-6">Required certifications for real estate transfers and annual system health audits in Howard/Baltimore Counties.</p>
-					<hr class="border-slate-100" />
+				<div class="grid md:grid-cols-2 gap-10 items-center">
+					<div class="order-2 md:order-1">
+						<h3 class="text-2xl font-bold text-[#28657c] mb-4 uppercase tracking-tighter">Emergency Response</h3>
+						<p class="text-slate-600 leading-relaxed">24/7 rapid response for critical issues that can't wait. We're on standby for {city} neighbors when disaster strikes.</p>
+					</div>
+					<img src="https://sc02.alicdn.com/kf/A7bbd8d3c7a744fa994400de2ba60f6617.png" alt="Emergency" class="w-full h-64 object-cover rounded shadow-lg order-1 md:order-2" />
 				</div>
 			</div>
 		</div>

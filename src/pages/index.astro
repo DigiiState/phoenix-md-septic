@@ -4,6 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const phone = "866-891-9778";
 const city = "Phoenix";
 const niche = "Septic Pumping";
+const webhookUrl = "https://hook.us2.make.com/223eq5l4jpl718k6r1yhbndcmq7d4iw2";
 
 // Niche-specific images mapping
 const images = {
@@ -67,14 +68,14 @@ const truckImage = "https://sc02.alicdn.com/kf/A5dd3b365fb234f248e7bf68750182700
 			<!-- Sidebar Form -->
 			<div class="bg-slate-50 border-2 border-[#28657c] p-10 shadow-xl">
 				<h3 class="text-xl font-bold text-center text-[#28657c] uppercase mb-8 tracking-tighter">Request a Free Estimate</h3>
-				<form class="space-y-4">
-					<input type="text" placeholder="Your Name" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
-					<input type="tel" placeholder="Phone Number" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
-					<input type="text" placeholder="Zip Code (e.g. 21131)" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
-					<textarea placeholder="Tell us what you need..." class="w-full border border-slate-300 p-3 h-32 outline-[#28657c]"></textarea>
-					<button class="w-full bg-[#28657c] text-white py-4 font-bold text-lg uppercase tracking-tighter hover:bg-[#1e4e5e] transition-colors shadow-lg">Get Your Quote</button>
+				<form id="leadForm" class="space-y-4">
+					<input type="text" name="name" required placeholder="Your Name" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<input type="tel" name="phone" required placeholder="Phone Number" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<input type="text" name="zip" required placeholder="Zip Code (e.g. 21131)" class="w-full border border-slate-300 p-3 outline-[#28657c]" />
+					<textarea name="service" required placeholder="Tell us what you need..." class="w-full border border-slate-300 p-3 h-32 outline-[#28657c]"></textarea>
+					<button type="submit" class="w-full bg-[#28657c] text-white py-4 font-bold text-lg uppercase tracking-tighter hover:bg-[#1e4e5e] transition-colors shadow-lg">Get Your Quote</button>
 				</form>
-				<p class="text-[10px] text-slate-400 mt-4 text-center uppercase font-bold">100% Satisfaction Guaranteed locally in Maryland</p>
+				<p id="formStatus" class="text-[10px] text-slate-400 mt-4 text-center uppercase font-bold">100% Satisfaction Guaranteed locally in Maryland</p>
 			</div>
 		</div>
 	</section>
@@ -157,3 +158,37 @@ const truckImage = "https://sc02.alicdn.com/kf/A5dd3b365fb234f248e7bf68750182700
 		</div>
 	</section>
 </Layout>
+
+<script define:vars={{ webhookUrl, city, niche }}>
+	const form = document.getElementById('leadForm');
+	const status = document.getElementById('formStatus');
+
+	form.addEventListener('submit', async (e) => {
+		e.preventDefault();
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData.entries());
+		
+		// Add metadata
+		data.source = window.location.hostname;
+		data.city = city;
+		data.niche = niche;
+
+		try {
+			status.textContent = "SENDING...";
+			const response = await fetch(webhookUrl, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(data)
+			});
+
+			if (response.ok) {
+				status.textContent = "✅ REQUEST RECEIVED! WE WILL CALL YOU SHORTLY.";
+				form.reset();
+			} else {
+				throw new Error();
+			}
+		} catch (err) {
+			status.textContent = "❌ ERROR SENDING. PLEASE CALL US INSTEAD.";
+		}
+	});
+</script>
